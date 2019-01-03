@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1 id="comp-3490-assignment-3" style="background-color: #408; border-bottom: thin solid; color: #f0f0f0; font-family: Helvetica, Arial, sans-serif; font-size: x-large; font-weight: bold; margin: 0; padding: 12px; text-align: center; width: 100%;" bgcolor="#440088" align="center" width="100%">COMP 3490 Assignment 3</h1>
+<h2 id="material-covered" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Material covered:</h2>
+<ul>
+<li>animation techniques</li>
+<li>3D transformation and viewing</li>
+<li>hierarchical modeling</li>
+</ul>
+<h2 id="notes" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Notes:</h2>
+<ul>
+<li>For all programs, use Processing (P3D) or JOGL under Java, or another OpenGL environment with the consent of the instructor.</li>
+<li>Include a text <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">readme</code> file that describes the platform you used to test your programs (Processing or Java version, operating system, graphics hardware), and notes to the marker for each question (e.g. things that don't work as expected or things that are better than required).</li>
+<li>Electronically submit a copy of your source code files in a single <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">.zip</code> file.</li>
+<li>Use the following folder structure within your zip file:</li>
+</ul>
+<pre style="background-color: #ffffd0; border-bottom: dotted thin black; border-top: dotted thin black; margin-left: 20px; margin-right: 20px; padding: 1em 0.5em 1em 0.5em;" bgcolor="#FFFFD0"><code style="background-color: transparent; font-family: Consolas, Courier, 'Courier New', monospace;">Readme.txt
+Q1/
+   Q1.pde (or Q1.java, and any other source code files)
+Q2/
+   Q2.pde</code></pre>
+<ul>
+<li>Your assignment submission <strong>must</strong> run correctly with files in that structure, and as downloaded. Do not use further subfolders (e.g. no Java packages). The marker <strong>will not</strong> reorganize or rename files to make it run.</li>
+<li>Name your zip file in the form <em><code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">LastnameFirstname</code></em><code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">A3.zip</code>, replacing <em>LastnameFirstname</em> with your last and first names.</li>
+<li>The initial window size for both questions should be 640x640, and you <strong>do not need</strong> to handle window resizing.</li>
+</ul>
+<h2 id="question-1-elastic-collisions-2d" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Question 1: Elastic collisions (2D)</h2>
+<p style="text-align: center; font-style: italic;">This question is worth 40% of the assignment mark.</p>
+<p>Write a P3D/OpenGL program that will run an animated particle system based on 2D elastic collisions between circular objects, treated as idealized point masses. Each object has at least a position and velocity, with x and y components for both. The system will run indefinitely.</p>
+<p>Implementation requirements:</p>
+<ul>
+<li>You may implement the physics of the system in any realistic (enough) way, but this <a href="http://www.vobarian.com/collisions/2dcollisions2.pdf">vector solution</a> is easy.</li>
+<li>The system is bounded by the edges of the window. Collision with a border is handled very simply by reversing the component of the velocity corresponding to that edge of the window.</li>
+<li>Some minor errors in the simulation will be tolerated but they should be infrequent.</li>
+<li>The system runs in real time. Update the motion based on the elapsed time each frame.</li>
+<li>All object sizes and masses can be the same, unless as described below.</li>
+<li>The number of objects, their sizes, and velocity ranges are chosen by you to make things reasonable.</li>
+<li>Create random initial objects within the limits you chose. Do not allow the initial objects to overlap.</li>
+<li>You must animate object positions PLUS ONE other parameter of your choice. Possibilities include rotation, size, colour, etc. Try not to do anything unpleasant like strobing colours, but ensure the animation is visible. Mention the parameter you choose in your notes to the marker when you hand in your assignment.</li>
+<li>Add <strong>AT LEAST ONE MORE</strong> feature of your choice to the system. Possibilities include limited object lifespan (which requires both birth and death, keep the number of particles close to constant), angular velocity (lots of effort but cool), collision with some other object (add a "net" that you try to redirect the particles into), interaction (clicking a particle and dragging it with the mouse will use that as its velocity, allowing you to collide it into other objects), etc. Again, describe the feature to the marker as part of your submission.</li>
+</ul>
+<h2 id="question-2-claw-machine-3d" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Question 2: Claw Machine (3D)</h2>
+<p style="text-align: center; font-style: italic;">This question is worth 60% of the assignment mark.</p>
+<p>Write a P3D/OpenGL program that will implement a simulation of a "claw" from a <a href="https://en.wikipedia.org/wiki/Claw_crane">claw machine</a>. The claw machine is built from simple 3D shapes like boxes and/or spheres. In this version of the machine, the crane is mounted on a rotating arm, and can move along the axis of that arm. The claw hangs from the crane on a cable, and the cable can pull the claw up and down. The claw can rotate (separately from the arm). The claw gripper can open and close.</p>
+<p>When your simulation first starts, it should be motionless. Pressing a key as shown below will cause that motion to start. The motion will continue at the same speed until:</p>
+<ul>
+<li>a movement reaches its end (if there is one: the arm and claw can rotate indefinitely);</li>
+<li>the same key is pressed, which will stop the motion; or</li>
+<li>the key to move the part in the opposite direction is pressed, which will reverse the direction of the motion (at the same speed).</li>
+</ul>
+<p>There is also a special behaviour for the <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">space bar</code> key. Pressing space will cause the claw gripper to open, the cable to drop the claw to its maximum extent, the claw gripper to close, and then the cable to rise back up to its minimum extent. This sequence does not need to be interruptible by any other keys.</p>
+<p>There are also special functions for the <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">o</code>, <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">p</code>, <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">1</code>, <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">2</code>, and <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">3</code> keys on the keyboard:</p>
+<ul>
+<li>pressing the <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">o</code> key will switch to an orthographic projection;</li>
+<li>pressing the <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">p</code> key will switch to a perspective projection; and</li>
+<li>pressing the <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">1</code>, <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">2</code>, and <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">3</code> keys will switch between three different views of the machine. Note that all three should "work" (without visual glitches) in both projections.</li>
+</ul>
+<div style="text-align: center;"><img width="340" height="432" src="a3q2.png" /></div>
+<p>At the bottom of your machine, draw a variety of 3D shapes ("prizes"). Note that you do not need to be able to manipulate these using your claw! You can place the objects out of the reach of the claw.</p>
+<p>Some general requirements:</p>
+<ul>
+<li>You <strong>must</strong> "hand-code" the geometry for at least <strong>one</strong> primitive used in your ball machine (e.g. a pyramid, or a box with different-coloured faces). Note in your <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">readme</code> file which geometry you created and where it appears in your scene.</li>
+<li>You may also use Processing's 3D primitives (box and sphere) as much as you like.</li>
+<li>Colours should be distinctive and clearly show the parts of the machine and prizes.</li>
+<li>Except for the <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">space bar</code> claw down sequence, all motions can occur at the same time.</li>
+<li>All motion should be smooth: there should be no visible "jumps" in position, and movement speed should be consistent.</li>
+<li>The machine should be physically consistent: parts of it shouldn't unreasonably intersect with or become disconnected from other parts.</li>
+<li>The views you choose should show most/all of your scene in both projections.</li>
+</ul>
+</body>
+</html>
