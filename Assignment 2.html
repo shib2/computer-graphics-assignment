@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1 id="comp-3490-assignment-2" style="background-color: #408; border-bottom: thin solid; color: #f0f0f0; font-family: Helvetica, Arial, sans-serif; font-size: x-large; font-weight: bold; margin: 0; padding: 12px; text-align: center; width: 100%;" bgcolor="#440088" align="center" width="100%">COMP 3490 Assignment 2</h1>
+<h2 id="material-covered" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Material covered:</h2>
+<ul>
+<li>transformations in 2D</li>
+<li>(nested) coordinate systems</li>
+<li>interactivity</li>
+</ul>
+<h2 id="notes" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Notes:</h2>
+<ul>
+<li>For all programs, use Processing (P3D) or JOGL under Java, or another OpenGL environment with the consent of the instructor.</li>
+<li>Include a text <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">readme</code> file that describes the platform you used to test your programs (Processing or Java version, operating system, graphics hardware), and notes to the marker for each question (e.g. things that don't work as expected or things that are better than required).</li>
+<li>Electronically submit a copy of your source code files in a single <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">.zip</code> file.</li>
+<li>Use the following folder structure within your zip file:</li>
+</ul>
+<pre style="background-color: #ffffd0; border-bottom: dotted thin black; border-top: dotted thin black; margin-left: 20px; margin-right: 20px; padding: 1em 0.5em 1em 0.5em;" bgcolor="#FFFFD0"><code style="background-color: transparent; font-family: Consolas, Courier, 'Courier New', monospace;">Readme.txt
+Q1/
+   Q1.pde (or Q1.java, and any other source code files)
+Q2/
+   Q2.pde</code></pre>
+<ul>
+<li>Your assignment submission <strong>must</strong> run correctly with files in that structure, and as downloaded. Do not use further subfolders (e.g. no Java packages). The marker <strong>will not</strong> reorganize or rename files to make it run.</li>
+<li>Name your zip file in the form <em><code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">LastnameFirstname</code></em><code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">A2.zip</code>, replacing <em>LastnameFirstname</em> with your last and first names.</li>
+<li>Question 1's initial window size should be 640x640, and you do not need to handle window resizing.</li>
+<li>Question 2's initial window size should be 800x600, and you <em>do</em> need to handle window resizing.</li>
+<li>Ensure that you have printed, filled in, signed, and submitted a copy of your <strong>blanket honesty declaration</strong> to your instructor <em>or</em> online before the assignment due date.</li>
+</ul>
+<h2 id="question-1-the-burbs" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Question 1: The 'burbs</h2>
+<p style="text-align: center; font-style: italic;">This question is worth 50% of the assignment mark.</p>
+<p>Write a P3D/OpenGL program that draws a neighbourhood of similar-but-different looking houses by creating one parameterized house and then redrawing it multiple times with different parameter values. The entire house is drawn in one coordinate system and transformed for each copy. The components of a house are each drawn in their own coordinate systems and arranged within the house.</p>
+<p>Your house must be made up of the following components, which in turn are made up of the other components shown underneath:</p>
+<ul>
+<li>roof
+<ul>
+<li>rooftop</li>
+<li>chimney</li>
+</ul>
+</li>
+<li>front wall
+<ul>
+<li>bricks/logs/pillars/etc (in rows and/or columns)</li>
+<li>door</li>
+<li>window</li>
+</ul>
+</li>
+<li>tree
+<ul>
+<li>leaves</li>
+<li>trunk</li>
+</ul>
+</li>
+</ul>
+<p>The bottom-level components must each be drawn in their own coordinate system, and must be made up of at least three different primitives with different and clearly-visible colours. The higher-level components must in turn be drawn in their own coordinate system, with the bottom-level elements arranged within.</p>
+<p>Each of the three higher-level components must be separately and non-uniformly scaleable; e.g. wide front, tall roof, tiny tree. When the front wall is scaled, the repeated bottom-level component (bricks/logs/pillars/etc) must keep their original proportions; e.g. a tall wall will have more rows of bricks, not tall bricks. The other bottom-level components can either be scaled relatively or separately.</p>
+<p>In addition to the higher-level scaling, you must implement each of the following parameterized transformations for at least <strong>one</strong> component of the bottom-level geometry, and at least <strong>one</strong> component of the higher-level geometry:</p>
+<ul>
+<li>translation</li>
+<li>rotation</li>
+<li>scaling (already done for the higher-level)</li>
+<li>reflection</li>
+<li>shearing</li>
+</ul>
+<p>Changing these parameters within a restricted range should maintain the "structural integrity" of the components; e.g. a small rotation shouldn't cause the roof to come off of the house.</p>
+<p>For your final output, draw the house <strong>nine</strong> times. The version in the centre of the screen should be "normal": uniform scale, no rotation, etc. The other eight copies should each have different values for the parameters, as well as a variety of uniform sizes and rotations for the entire drawing. Try to keep them from overlapping.</p>
+<p>In your <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">readme</code> file, for each parameterized transformation, list the names of the components that you applied it to, and for each copy of the house drawn, list the different parameters and transformations you used, in words. For example, your <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">readme</code> file should contain something formatted like this:</p>
+<pre style="background-color: #ffffd0; border-bottom: dotted thin black; border-top: dotted thin black; margin-left: 20px; margin-right: 20px; padding: 1em 0.5em 1em 0.5em;" bgcolor="#FFFFD0"><code style="background-color: transparent; font-family: Consolas, Courier, 'Courier New', monospace;">Question 1 transformations:
+
+translation: tree, window
+rotation: tree, chimney
+scaling: ...
+...
+
+top-left copy: rotated 8 degrees, scaled 75%
+ - tree translated left, window translated up
+ - tree rotated -5 degrees, chimney rotated 5 degrees
+ - wall has 4 rows of 5 bricks
+ - ...
+...</code></pre>
+<h2 id="question-2-triangle-composer" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Question 2: Triangle composer</h2>
+<p style="text-align: center; font-style: italic;">This question is worth 50% of the assignment mark.</p>
+<p>Write an interactive OpenGL program that will allow you to create and edit 2D triangles, which can be connected by shared vertices.</p>
+<p>When you first start your program, it should display a colour selection panel and an empty drawing area. One colour will be selected by default. Clicking in the colour selection panel will select a different colour. Clicking in the drawing area will specify the first vertex for a triangle. The next two clicks will specify the remaining two vertices and close the triangle, drawing it as a filled shape using the currently selected colour. This process can be repeated to draw additional triangles. If you click on or close enough to an existing vertex (gravity), the triangle can share one or more vertices with existing triangles.</p>
+<p>You can also click in an existing triangle to select it. The selected triangle will be drawn distinctively (e.g. thicker outline, vertices drawn as circles). Clicking and dragging the triangle will move it. Clicking and dragging a vertex of the selected triangle will move it. The vertex will be moved for all triangles that share the vertex. If a triangle is selected, clicking in an empty space in the drawing area will deselect it.</p>
+<p>It is also possible to transform the view. You can use the keyboard to translate and scale the view (not the vertices!). If a triangle is selected, the same keyboard keys will translate and scale the selected triangle around its centre. You can also use the keyboard to rotate the selected triangle around its centre. The rotation transformation does not apply to the view.</p>
+<div style="text-align: center;"><img width="400" height="300" src="a2q2.png" alt="" title="" style="max-width: 100%;" data-d2l-editor-default-img-style="true" /></div>
+<ul>
+<li>Use ten different colours in the colour panel at the bottom of the window. They should be placed in equally-sized rectangles.</li>
+<li>The colour panel should scale to fill the width of the window.</li>
+<li>Indicate the currently-selected colour somehow, such as with an outline around it.</li>
+<li>Draw each triangle as a filled shape with a white outline.</li>
+<li>Use some visually-distinct colour for the selected triangle.</li>
+<li>Use 7 pixels as a "gravity" distance (radius) for connecting vertices.</li>
+<li>Use <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">w a s d</code> keys for translating the view or the selected triangle.</li>
+<li>Use <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">c v</code> keys for scaling the view or the selected triangle. One will increase the scale by 0.1, the other will decrease it by 0.1.</li>
+<li>Use the <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">z</code> key to restore the view to its original state (no translation or scaling). It has no effect on triangles.</li>
+<li>Use <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">e r</code> keys for rotating the selected triangle. One will rotate clockwise, the other counter-clockwise. Rotate by 3.75 degrees (PI/48 radians) with each press. It has no effect on the view.</li>
+<li>Calculate the triangle centre as the average of its x and y coordinates.</li>
+<li>Triangle creation, selection, and triangle/vertex dragging should still work in a transformed view.</li>
+<li>Keyboard commands do not need to work while you are creating or dragging triangles or vertices.</li>
+<li><strong>Optionally:</strong> When you are transforming a triangle, all triangles that share vertices with it are "connected", and all triangles that share vertices with other connected triangles are also connected. Transform all connected triangles together. To determine connected triangles, you can search repeatedly for each shared index in other triangles.</li>
+<li>Transforming triangles and vertices can change their geometry.</li>
+<li>Transforming the view should not change the vertex data; vertices should be transformed before drawing.</li>
+<li>Use floating-point coordinates for triangle vertices, regardless of your chosen coordinate system.</li>
+<li>Don't put any special effort into managing "in front of" and "behind". This may cause strange artefacts, such as (parts of) a selected triangle appearing behind others.</li>
+<li>Behave as well as you can. There are a lot of possible states during input, and managing them is difficult. A "bit" of glitchiness is acceptable (but not too much).</li>
+<li>Crash under no circumstances.</li>
+</ul>
+<p>To enable window resizing, add a call <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">surface.setResizable(true);</code> to your <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">setup()</code> method.</p>
+</body>
+</html>
