@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1 id="comp-3490-assignment-4" style="background-color: #408; border-bottom: thin solid; color: #f0f0f0; font-family: Helvetica, Arial, sans-serif; font-size: x-large; font-weight: bold; margin: 0; padding: 12px; text-align: center; width: 100%;" bgcolor="#440088" align="center" width="100%">COMP 3490 Assignment 4</h1>
+<h2 id="material-covered" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Material covered:</h2>
+<ul>
+<li>3D environments and interaction</li>
+<li>camera control in a 3D scene</li>
+<li>texture mapping</li>
+</ul>
+<h2 id="notes" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Notes:</h2>
+<ul>
+<li>For all programs, use Processing (P3D) or JOGL under Java, or another OpenGL environment with the consent of the instructor.</li>
+<li>Include a text <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">readme</code> file that describes the platform you used to test your programs (Processing or Java version, operating system, graphics hardware), and notes to the marker for each question (e.g. things that don't work as expected or things that are better than required).</li>
+<li>Electronically submit a copy of your source code files in a single <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">.zip</code> file.</li>
+<li>Use the following folder structure within your zip file:</li>
+</ul>
+<pre style="background-color: #ffffd0; border-bottom: dotted thin black; border-top: dotted thin black; margin-left: 20px; margin-right: 20px; padding: 1em 0.5em 1em 0.5em;" bgcolor="#FFFFD0"><code style="background-color: transparent; font-family: Consolas, Courier, 'Courier New', monospace;">Readme.txt
+Q1/
+   Q1.pde (or Q1.java, and any other source code files)
+   assets/
+     texture files
+     any other data files you use</code></pre>
+<ul>
+<li>Your assignment submission <strong>must</strong> run correctly with files in that structure, and as downloaded. Do not use further subfolders (e.g. no Java packages). The marker <strong>will not</strong> reorganize or rename files to make it run.</li>
+<li>Name your zip file in the form <em><code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">LastnameFirstname</code></em><code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">A4.zip</code>, replacing <em>LastnameFirstname</em> with your last and first names.</li>
+<li>The initial window size for both questions should be 800x600, and you <strong>do not need</strong> to handle window resizing.</li>
+</ul>
+<h2 id="question-1-virtual-gallery" style="border-bottom-color: #408; border-bottom-style: solid; border-bottom-width: 2px; font-family: Helvetica, Arial, sans-serif; font-size: large; font-weight: bold;">Question 1: Virtual gallery</h2>
+<p style="text-align: center; font-style: italic;">This question is worth 100% of the assignment mark.</p>
+<p>Write a P3D/OpenGL program that will allow the user to navigate through a simple virtual 3D environment, in a first-person view, simulating an art gallery with interactive exhibits.</p>
+<p>The exhibits are arranged on a 2-dimensional grid: some spaces on the grid will contain exhibits, others will contain blank spaces that the user can walk through to view the exhibits. Use perspective projection.</p>
+<p>The assignment will include texture mapping. Make your own textures, or find some from the Internet. Make sure you are legally able to use them; one place to find freely-usable textures is <a href="https://textures.com">textures.com</a>. Cite your sources.</p>
+<p>The gallery must meet the following requirements:</p>
+<h3 id="the-exhibits" style="color: #408; font-size: medium; font-variant: small-caps; text-decoration: underline;">The exhibits</h3>
+<ul>
+<li>Exhibits completely occupy one or more spaces on the grid.</li>
+<li>Exhibits consist of a 3D primitive or complex geometry (your choice) in which all faces are <em>texture mapped</em>. Use any textures you like.</li>
+<li>You must have at least four different exhibits. All four must have different textures, and amongst them, they must have at least two different geometries (e.g. cube and sphere).</li>
+<li>The exhibits must be <del>interactive in that they have at least one animation parameter that can be activated by clicking on them</del> <em>animated</em>. Animate any parameter(s) you like (rotation, texture coordinates, etc.).</li>
+<li><del>For hit testing, you can simply do a hit test on the bounding volume (3D box) for the grid location(s) that the exhibit occupies.</del></li>
+<li><del>The animation will run once after clicking on the the exhibit, then stop.</del></li>
+<li><del>All instances of the exhibit (see below) may be animated simultaneously, or just the one that was clicked on.</del></li>
+</ul>
+<h3 id="the-gallery" style="color: #408; font-size: medium; font-variant: small-caps; text-decoration: underline;">The gallery</h3>
+<ul>
+<li><del>The grid that makes up the gallery extends infinitely (or within integer/float range) in all directions. You can't leave.</del></li>
+<li><del>You should only calculate and draw the portion of the grid within some distance of the viewer. Choose a reasonable distance limit, which may be rectangular or circular.</del></li>
+<li><del>The positions of the exhibits repeat throughout the space. E.g. if an exhibit occurs at position (0,0) in the grid it may also occur at (0,15) and (0,-15) and (15,15) and (-15,-15) and (15n,15n) for every integer n (where "15" depends on your choice of dimensions).</del></li>
+<li>The gallery exists within a fixed space bounded on all sides by walls. The walls must be texture-mapped. Make sure there is enough room to completely demonstrate the required features of motion.</li>
+<li>The gallery must have blank spaces, with no exhibits. They can be narrow corridors (4-connected grid squares) or wider spaces.</li>
+<li>The blank spaces must have a visible <em>texture-mapped</em> floor. Choose a texture that looks like a floor.</li>
+<li>The viewer is always located at some reasonable position in a grid square (such as its centre). The square must be a blank space.</li>
+<li>The viewer can walk along the blank spaces between the exhibits. Use the W/A/S/D keys to allow forward/left turn/backward/right turn. Turns should occur at full 90 degree angles (you can only move along the grid lines) except as noted below.</li>
+<li>The viewer can only walk from one blank space to another. They cannot walk through exhibits.</li>
+<li>Motion through the gallery must be smoothly animated between grid squares, and when rotating at 90-degree angles.</li>
+</ul>
+<h3 id="one-more-feature" style="color: #408; font-size: medium; font-variant: small-caps; text-decoration: underline;">One more feature</h3>
+<p>You must implement "one more feature" as follows:</p>
+<ul>
+<li><strong>Over-the-shoulder third person</strong>: Add the ability to switch between a first-person view and a camera that is positioned "behind" the gallery visitor. The visitor is now an avatar and should be drawn (and animated) appropriately.</li>
+<li><strong>Quaternion flyover</strong>: Pressing the <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">SPACE</code> key will trigger a camera that leaves the viewer position and views the world and some unusual, but smoothly animated way. Camera orientation should change along multiple axes, requiring the use of quaternions. The camera motion can be "canned" (returning back to the original view), or controlled by W/A/S/D and/or the mouse and (smoothly) returning back to the original view by hitting <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">SPACE</code> again.</li>
+<li><strong>Shading</strong>: Incorporate shading using a Gouraud shading model (as built into OpenGL/P3D). Use a variety of material parameters for different objects and the floor, with a variety of elements (ambient, diffuse, and specular), a spotlight pointing in the direction of the gallery visitor, and point and directional lights.</li>
+<li><strong>Interactivity</strong>: At least one of your exhibits must be interactive. It will have at least three different hit regions that you can click on using the mouse <em>in the 3D view</em> that will trigger different animated behaviours.</li>
+<li><strong>Free look and move</strong>: Drag the mouse to freely and smoothly change the camera angle (up/down and left/right). Allow straight movement along the (non-grid-aligned) left/right angle, ensuring you don't walk through exhibits. Hitting A/D (turn) will restore the view to grid aligned and level (the default vertical camera angle), smoothly animated.</li>
+<li><strong>Other visitors</strong>: Include at least two other visitors, moving through the museum, each with unique animation and geometry. <span style="text-decoration: line-through;">Like the exhibits, they will also repeat throughout the museum.</span></li>
+</ul>
+<p>Describe the feature you implemented in your <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">README</code> file, including instructions to make it work (if required). <strong>Bonus</strong>: implement a second and third feature for up to +8 bonus marks (out of 20; note that you can still only receive a maximum of 80/80 on your assignments).</p>
+</body>
+</html>
